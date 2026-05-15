@@ -1,5 +1,10 @@
 # HIT137 Assignment 3 — Spot the Difference Game
-
+# Group Name: DAN20
+## Group Members:
+    Ayushma Pandey – S394814
+    Bibek Prasai – S396542
+    Tharaka Maduwantha Senevirathne Edirisinghe Arachchige – S396116
+    Kritik Dahal – S395912
 ## Overview
 A desktop "Spot the Difference" game built with Python, Tkinter, and OpenCV.
 Two images are shown side-by-side. One is the original; the other has **5 hidden
