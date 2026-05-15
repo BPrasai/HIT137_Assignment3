@@ -1,11 +1,10 @@
-from difference import Difference
+"""
+HIT137 Assignment 3 - Spot the Difference Game
+Main entry point
+"""
 
-# Create a test difference
-diff = Difference(50, 50, 100, 100, "color")
+from game_app import SpotTheDifferenceApp
 
-# Simulate clicks
-print(diff.contains_point(60, 60))  # Expected: True
-print(diff.contains_point(10, 10))  # Expected: False
-
-diff.mark_found()
-print(diff.found)  # Expected: True
+if __name__ == "__main__":
+    app = SpotTheDifferenceApp()
+    app.run()
