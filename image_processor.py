@@ -78,7 +78,7 @@ class ImageProcessor:
         regions: list[DifferenceRegion] = []
         alteration_types = self.ALTERATION_TYPES.copy()
         random.shuffle(alteration_types)
-        # Ensure at least 3 distinct types used (cycle if needed)
+        # Ensure at least 3 distinct types used 
         types_to_use = []
         for i in range(self.NUM_DIFFERENCES):
             types_to_use.append(alteration_types[i % len(alteration_types)])
