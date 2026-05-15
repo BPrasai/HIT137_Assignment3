@@ -14,7 +14,7 @@ from PIL import Image, ImageTk
 from game_state import GameState
 
 
-# ─── Base class (inheritance) ────────────────────────────────────────────────
+#  Base class (inheritance) 
 class BaseApp:
     """
     Abstract base class that owns the Tk root window.
@@ -35,7 +35,7 @@ class BaseApp:
         self.root.destroy()
 
 
-# ─── Main application (polymorphism via method overriding) ───────────────────
+# Main application (polymorphism via method overriding) 
 class SpotTheDifferenceApp(BaseApp):
     """
     Full Spot-the-Difference desktop application.
@@ -58,7 +58,7 @@ class SpotTheDifferenceApp(BaseApp):
         self.state = GameState()
         self._build_ui()
 
-    # ── UI construction ──────────────────────────────────────────────────────
+    # UI construction 
     def _build_ui(self):
         # Top toolbar
         toolbar = tk.Frame(self.root, bg=self.PANEL_BG, pady=8)
@@ -136,7 +136,7 @@ class SpotTheDifferenceApp(BaseApp):
             canvas.create_text(300, 240, text="No image loaded",
                                 fill=self.SUB_TEXT, font=("Segoe UI", 16))
 
-    # ── Image loading ────────────────────────────────────────────────────────
+    #  Image loading 
     def _load_image(self):
         path = filedialog.askopenfilename(
             title="Select an image",
@@ -153,12 +153,12 @@ class SpotTheDifferenceApp(BaseApp):
         self._update_status_bar()
         self._var_status.set("Find the 5 differences! Click on the modified image.")
 
-    # ── Click handler ────────────────────────────────────────────────────────
+    # Click handler
     def _on_canvas_click(self, event):
         if not self.state.can_click:
             return
 
-        # Map canvas coords → image coords
+        # Map canvas coords to image coords
         px, py = self._canvas_to_image_coords(event.x, event.y)
         result = self.state.handle_click(px, py)
 
@@ -190,7 +190,7 @@ class SpotTheDifferenceApp(BaseApp):
                 "Load a new image to restart."
             )
 
-    # ── Reveal ───────────────────────────────────────────────────────────────
+    # Reveal 
     def _reveal_all(self):
         if not self.state.is_loaded:
             messagebox.showinfo("No image", "Please load an image first.")
@@ -203,7 +203,7 @@ class SpotTheDifferenceApp(BaseApp):
         self._lbl_status.configure(fg=self.ACCENT)
         self._var_status.set("🔵 All differences revealed. Load a new image to restart.")
 
-    # ── Rendering helpers ────────────────────────────────────────────────────
+    #  Rendering helpers 
     def _refresh_canvases(self):
         orig_arr = self.state.get_original_display()
         mod_arr  = self.state.get_modified_display()
