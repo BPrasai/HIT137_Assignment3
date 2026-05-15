@@ -32,7 +32,7 @@ class GameState:
         self._original_display: np.ndarray = None
         self._modified_display: np.ndarray = None
 
-    # ── Properties ──────────────────────────────────────────────────
+    # Properties 
     @property
     def is_loaded(self) -> bool:
         return self.image_processor.original_bgr is not None
@@ -49,7 +49,7 @@ class GameState:
     def can_click(self) -> bool:
         return self.is_loaded and not self.game_over and not self.all_found and not self.revealed
 
-    # ── Image loading ────────────────────────────────────────────────
+    #  Image loading 
     def load_image(self, path: str) -> bool:
         ok = self.image_processor.load_image(path)
         if ok:
@@ -61,7 +61,7 @@ class GameState:
             self._refresh_display()
         return ok
 
-    # ── Click handling ───────────────────────────────────────────────
+    # Click handling 
     def handle_click(self, px: int, py: int) -> str:
         """
         Process a click on the modified image.
@@ -91,7 +91,7 @@ class GameState:
             return "max_mistakes"
         return "mistake"
 
-    # ── Reveal ───────────────────────────────────────────────────────
+    #  Reveal 
     def reveal_all(self):
         """Mark all unfound differences with blue circles."""
         if not self.is_loaded:
@@ -101,7 +101,7 @@ class GameState:
                 self._draw_circle_revealed(region)
         self.revealed = True
 
-    # ── Display helpers ──────────────────────────────────────────────
+    #  Display helpers 
     def _refresh_display(self):
         self._original_display = self.image_processor.get_original_display()
         self._modified_display = self.image_processor.get_modified_display()
